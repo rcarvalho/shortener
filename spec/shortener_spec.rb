@@ -19,9 +19,14 @@ RSpec.describe 'shortener' do
       s.shorten('http://google.com/', 'gggggg')
     end
 
-    it 'raises an error if custom slug is not valid' do
+    it 'raises an error if custom slug is less than 6 characters' do
       s = Shortener.new(nil)
       expect { s.shorten('http://google.com/', 'abc') }.to raise_error('Invalid slug. Must be exactly 6 alpha numeric characters.')
+    end
+
+    it 'raises an error if custom slug is greater than 6 characters' do
+      s = Shortener.new(nil)
+      expect { s.shorten('http://google.com/', 'abcdefg') }.to raise_error('Invalid slug. Must be exactly 6 alpha numeric characters.')
     end
 
     it 'raises an error if the custom slug is in use' do
@@ -82,7 +87,7 @@ RSpec.describe 'shortener' do
       s.read_slug('abcdef')
     end
   end
-  
+
   describe 'delete_slug' do
     it 'calls del on the Redis API' do
       st = stub()

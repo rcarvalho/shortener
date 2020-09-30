@@ -10,7 +10,7 @@ class Shortener
     raise "Not a valid URL. Must begin with http." if url !~ /^http/
 
     if slug
-      raise "Invalid slug. Must be exactly 6 alpha numeric characters." unless slug =~ /\w{6}/
+      raise "Invalid slug. Must be exactly 6 alpha numeric characters." unless slug =~ /^\w{6}$/
       if read_slug(slug)
         raise "The specified slug is in use and must be unique. Please try another slug."
       else
