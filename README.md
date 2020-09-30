@@ -1,5 +1,5 @@
 ## Overview
-I decided to use the Sinatra framework because it is lighter than Rails for the purpose of this simple application. Sinatra has built-in routing yet is lightweight. The list of assumptions are below:
+This is a URL shortening service. I decided to use the Sinatra framework because it is lighter than Rails for the purpose of this simple application. Sinatra has built-in routing yet is lightweight. The list of assumptions are below:
 * The user info and associations with the slugs will be stored by the calling application. 
 * The slugs are unique system-wide. If a user tries to specify a custom slug that is already in use in the system they will receive an error.
 * The same URL can be stored multiple times.
